@@ -13,7 +13,7 @@
         <p id="timer"> </p>
     </header>
 
-    <div id="instructions">
+    <div id="instructions" class="container">
         <h2> Coding Quiz Challenge</h3>
         <p>
            Try to answer the following code-related questions within the time limit. <br/>
@@ -25,9 +25,64 @@
         </button>
     </div>
 
-    <div id="quiz">
+    <section class="quizContainer">
+            <h3 id="question"></h3>
+            <ol id="choices"></ol>
 
-    </div>
+        
+
+    </section>
+    <main id="quizContainer" class="container question-container">
+        <div id="quizContainer1" class="hide">
+        <h3 class="questionTitle">Commonly used data types DO NOT include:</h3>
+            <ul id="answerChoices" class="choices-list">
+                <li> <button id="choiceA" class="list-btn">1.  strings</button></li>
+                <li> <button id="choiceB" class="list-btn">2.  booleans</button></li>
+                <li> <button id="choiceC" class="list-btn">3.  alerts</button></li>
+                <li> <button id="choiceD" class="list-btn">4.  numbers</button></li>    
+            </ul>       
+        </div>
+
+        <div id="quizContainer2" class="hide">
+            <h3 class="questionTitle">The condition is an if/else statement is enclosed with ________.</h3>
+                <ul id="answerChoices" class="choices-list">
+                    <li> <button id="choice2A" class="list-btn">1.  quotes</button></li>
+                    <li> <button id="choice2B" class="list-btn">2.  curly brackets</button></li>
+                    <li> <button id="choice2C" class="list-btn">3.  parentheses</button></li>
+                    <li> <button id="choice2D" class="list-btn">4.  square brackets</button></li>    
+                </ul>       
+        </div>
+
+        <div id="quizContainer3" class="hide">
+            <h3 class="questionTitle">Arrays in JavaScript can be used to store _______.</h3>
+                <ul id="answerChoices" class="choices-list">
+                    <li> <button id="choice3A" class="list-btn">1.  numbers and arrays</button></li>
+                    <li> <button id="choice3B" class="list-btn">2.  other arrays</button></li>
+                    <li> <button id="choice3C" class="list-btn">3.  booleans</button></li>
+                    <li> <button id="choice3D" class="list-btn">4.  all of the above</button></li>    
+                </ul>       
+        </div>
+
+        <div id="quizContainer4" class="hide">
+            <h3 class="questionTitle">String values must be enclosed within ______</h3>
+                <ul id="answerChoices" class="choices-list">
+                    <li> <button id="choice4A" class="list-btn">1.  commas</button></li>
+                    <li> <button id="choice4B" class="list-btn">2.  curly brackets</button></li>
+                    <li> <button id="choice4C" class="list-btn">3.  quotes</button></li>
+                    <li> <button id="choice4D" class="list-btn">4.  parentheses</button></li>    
+                </ul>       
+        </div>
+
+        <div id="quizContainer5" class="hide">
+            <h3 class="questionTitle">A very useful tool used during development and debugging for printing content to the debugger is ______.</h3>
+                <ul id="answerChoices" class="choices-list">
+                    <li> <button id="choice5A" class="list-btn">1.  JavaScript</button></li>
+                    <li> <button id="choice5B" class="list-btn">2.  terminal/bash</button></li>
+                    <li> <button id="choice5C" class="list-btn">3.  for loops</button></li>
+                    <li> <button id="choice5D" class="list-btn">4.  console.log</button></li>    
+                </ul>       
+        </div>
+    </main>
 
     <div id="results">
 

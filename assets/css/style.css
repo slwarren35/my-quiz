@@ -1,6 +1,7 @@
 * {
     margin: 0px;
     box-sizing: border-box;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 header {
@@ -20,11 +21,10 @@ header p {
     font-size: 22px;
 }
 
-#instructions {
+.container {
     margin: 50px auto;
     padding: 20px;
     text-align: center;
-    border: 3px solid #000;
     width: 50%;
     font-size: 18px;
 }
@@ -43,4 +43,30 @@ header p {
 
 .hide {
     display: none;
+}
+
+.visible {
+    display:inherit;
+}
+
+.question-container{
+    width:max-content;
+
+}
+
+.questionTitle {
+    padding-bottom: 10px;
+}
+.choices-list {
+    list-style: none;
+    
+}
+
+.list-btn {
+    background-color: #89229c;
+    color:#fff;
+    font-size: 20px;
+    padding: 5px;
+    
+    
 }
