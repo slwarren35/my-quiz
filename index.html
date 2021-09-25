@@ -5,90 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Quiz</title>
+    <title>Code Quiz Challenge</title>
 </head>
 <body>
+    <!--Header Element with High Scores and Timer-->
     <header id="header">
-        <a href="">View high scores</a>
+        <!--View High Scores Button-->
+        <button id="viewScores" class="scores-btn">View High Scores</button>
+        <!--Timer-->
         <p id="timer"> </p>
     </header>
 
-    <div id="instructions" class="container">
-        <h2> Coding Quiz Challenge</h3>
-        <p>
-           Try to answer the following code-related questions within the time limit. <br/>
-           Keep in mind that incorrect answers will penalize your score/time <br/>
-           by ten seconds!
-        </p>
-        <button id="startQuiz">
-            Start Quiz
-        </button>
-    </div>
+    <!--Main Quiz Content-->
+    <main>
+        <!--Container for Intro-->
+        <div id="instructions" class="container">
+            <h1> Coding Quiz Challenge</h1>
+            <p>
+            Try to answer the following code-related questions within the time limit. <br/>
+            Keep in mind that incorrect answers will penalize your score/time <br/>
+            by ten seconds!
+            </p>
+            <button id="startQuiz" class="btn">
+                Start Quiz
+            </button>
+        </div>
 
-    <section class="quizContainer">
-            <h3 id="question"></h3>
-            <ol id="choices"></ol>
 
+        <!--Section containing quiz questions-->
         
+        <section id="questionsContainer" class="container">
+            <h2 id="questionTitle" class="questionTitle">Question</h2>
+            <ul class="choices">
+                <li><button id="optionA" value="0" class="btn btn-success btn-answer">Choice A</button></li>
+                <li><button id="optionB" value="1" class="btn btn-success btn-answer">Choice B</button></li>
+                <li><button id="optionC" value="2" class="btn btn-success btn-answer">Choice C</button></li>
+                <li><button id="optionD" value="3" class="btn btn-success btn-answer">Choice D</button></li>
+            </ul>
 
-    </section>
-    <main id="quizContainer" class="container question-container">
-        <div id="quizContainer1" class="hide">
-        <h3 class="questionTitle">Commonly used data types DO NOT include:</h3>
-            <ul id="answerChoices" class="choices-list">
-                <li> <button id="choiceA" class="list-btn">1.  strings</button></li>
-                <li> <button id="choiceB" class="list-btn">2.  booleans</button></li>
-                <li> <button id="choiceC" class="list-btn">3.  alerts</button></li>
-                <li> <button id="choiceD" class="list-btn">4.  numbers</button></li>    
-            </ul>       
-        </div>
+            <!--Container for Feedback on whether question or correct or wrong-->
+            <div id="feedback" class="feedback">
 
-        <div id="quizContainer2" class="hide">
-            <h3 class="questionTitle">The condition is an if/else statement is enclosed with ________.</h3>
-                <ul id="answerChoices" class="choices-list">
-                    <li> <button id="choice2A" class="list-btn">1.  quotes</button></li>
-                    <li> <button id="choice2B" class="list-btn">2.  curly brackets</button></li>
-                    <li> <button id="choice2C" class="list-btn">3.  parentheses</button></li>
-                    <li> <button id="choice2D" class="list-btn">4.  square brackets</button></li>    
-                </ul>       
-        </div>
+            </div>
+        </section>
 
-        <div id="quizContainer3" class="hide">
-            <h3 class="questionTitle">Arrays in JavaScript can be used to store _______.</h3>
-                <ul id="answerChoices" class="choices-list">
-                    <li> <button id="choice3A" class="list-btn">1.  numbers and arrays</button></li>
-                    <li> <button id="choice3B" class="list-btn">2.  other arrays</button></li>
-                    <li> <button id="choice3C" class="list-btn">3.  booleans</button></li>
-                    <li> <button id="choice3D" class="list-btn">4.  all of the above</button></li>    
-                </ul>       
-        </div>
+        <!--Final Score Section and Input Initials-->
+        <section id="theEnd" class="container">
+            <h3> All Done!</h3>
+            <p id="finalScore"></p>
+            <form id="enter-initials">
+                <label for="name">Enter Initials: </label>
+                <input type="text" id="name" name="name">
+                <button type="submit" class="btn">Submit<button>
+            </form>
+        </section>
 
-        <div id="quizContainer4" class="hide">
-            <h3 class="questionTitle">String values must be enclosed within ______</h3>
-                <ul id="answerChoices" class="choices-list">
-                    <li> <button id="choice4A" class="list-btn">1.  commas</button></li>
-                    <li> <button id="choice4B" class="list-btn">2.  curly brackets</button></li>
-                    <li> <button id="choice4C" class="list-btn">3.  quotes</button></li>
-                    <li> <button id="choice4D" class="list-btn">4.  parentheses</button></li>    
-                </ul>       
-        </div>
+        <!--High Score Section-->
+        <section id="highScores">
+            <h4> High Scores</h4>
+            <ol id="scores-list">
 
-        <div id="quizContainer5" class="hide">
-            <h3 class="questionTitle">A very useful tool used during development and debugging for printing content to the debugger is ______.</h3>
-                <ul id="answerChoices" class="choices-list">
-                    <li> <button id="choice5A" class="list-btn">1.  JavaScript</button></li>
-                    <li> <button id="choice5B" class="list-btn">2.  terminal/bash</button></li>
-                    <li> <button id="choice5C" class="list-btn">3.  for loops</button></li>
-                    <li> <button id="choice5D" class="list-btn">4.  console.log</button></li>    
-                </ul>       
-        </div>
+            </ol>
+            <button id="goBack" class="btn btn-success"> Go Back</button>
+            <button id="clearScores" class="btn btn-success">Clear Scores</button>
+        </section>
+    
     </main>
-
-    <div id="results">
-
-    </div>
-
-
-    <script src="assets/js/js.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
