@@ -34,7 +34,8 @@
 
         <!--Section containing quiz questions-->
         
-        <section id="questionsContainer" class="container">
+        <section>
+            <div id="questionsContainer" class="container hide">
             <h2 id="questionTitle" class="questionTitle">Question</h2>
             <ul class="choices">
                 <li><button id="optionA" value="0" class="btn btn-success btn-answer">Choice A</button></li>
@@ -42,7 +43,7 @@
                 <li><button id="optionC" value="2" class="btn btn-success btn-answer">Choice C</button></li>
                 <li><button id="optionD" value="3" class="btn btn-success btn-answer">Choice D</button></li>
             </ul>
-
+            </div>
             <!--Container for Feedback on whether question or correct or wrong-->
             <div id="feedback" class="feedback">
 
@@ -50,7 +51,7 @@
         </section>
 
         <!--Final Score Section and Input Initials-->
-        <section id="theEnd" class="container">
+        <section id="theEnd" class="container hide">
             <h3> All Done!</h3>
             <p id="finalScore"></p>
             <form id="enter-initials">
@@ -61,7 +62,7 @@
         </section>
 
         <!--High Score Section-->
-        <section id="highScores">
+        <section id="highScores" class="hide">
             <h4> High Scores</h4>
             <ol id="scores-list">
 

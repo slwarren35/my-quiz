@@ -1,5 +1,5 @@
 //time and score elements
-let timer = 0;
+let timer = 75;
 let score = 0;
 let timerEl = document.querySelector("#timer");
 timerEl.textContent = "Timer: " + timer;
@@ -9,7 +9,7 @@ let scoreEl = document.querySelector("#finalScore")
 
 
 let instructionsDivEl = document.querySelector("#instructions");
-let questionsContainerEl = document.querySelector("#instructions");
+let questionsContainerEl = document.querySelector("#questionsContainer");
 let questionTitle = document.querySelector("#questionTitle");
 let questionCount = 0;
 const feedbackEl = document.querySelector("#feedback");
@@ -66,42 +66,31 @@ const myQuestions = [
 ]
 
 
-//create timer countdown function to count down by one to be called in SetInterval function
-var timerCountdown = function() {
-    
-    if (timer > 0) {
-    
-    timerEl.textContent = "Timer: " + timer;
-    timer--;
-    } else {
-    clearInterval(startTimer);
-    timerEl.textContent = "Timer: " + timer;
-    return;  
-    }
-    console.log(timer);
-    
+
+
+//timer
+function setTime() {
+    let timerInterval = setInterval(function () {
+        timer--;
+        timerEl.textContent = `Time:${timer}`;
+
+        if (timer === 0 || questionCount === myQuestions.length) {
+            clearInterval(timerInterval);
+            questionsContainerEl.classList.add("hide")
+            theEndEl.classList.remove("hide");
+            scoreEl.textContent = timer;
+        }
+    }, 1000);
 }
 
-//create timer to count down every second
-var startTimer = function() {
-    timer = 75;
-    setInterval(timerCountdown, 1000);
- 
-};
-
-//starts timer when the Start Quiz Button is clicked
-
-  
+// start quiz with timer and set up questions
 function startQuiz() {
-    console.log("the button was clicked");
-    
-    //start the timer countdown
-    startTimer();
-   
-    //hide instructions div
-    instructionsDivEl.setAttribute("class", "hide");
-     
-}; 
+    instructionsDivEl.classList.add("hide");
+    questionsContainerEl.classList.remove("hide");
+    questionCount = 0;
+    setTime();
+    //setQuestion(questionCount);
+}
 
 startQuizBtnEl.addEventListener("click", startQuiz);
 
