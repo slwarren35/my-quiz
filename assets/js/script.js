@@ -4,6 +4,7 @@ let score = 0;
 let timerEl = document.querySelector("#timer");
 timerEl.textContent = "Timer: " + timer;
 let scoreEl = document.querySelector("#finalScore")
+let scoreListEl = document.querySelector("#scores-list")
 
 
 
@@ -26,7 +27,7 @@ const buttonOptionC = document.querySelector("#optionC");
 const buttonOptionD = document.querySelector("#optionD");
 const answerButtons = document.querySelectorAll(".btn-answer");
 const submitScoreButton = document.querySelector("#submitScores");
-const goBackButton = document.querySelector("#goBack")
+const goBackButton = document.querySelector("#goBack");
 const clearScoresButton = document.querySelector("#clearScores");
 
 
@@ -89,10 +90,133 @@ function startQuiz() {
     questionsContainerEl.classList.remove("hide");
     questionCount = 0;
     setTime();
-    //setQuestion(questionCount);
+    renderQuestion(questionCount);
 }
 
+// function to display questions 
+function renderQuestion(index) {
+    if (index < myQuestions.length) {
+        questionTitle.textContent = myQuestions[index].title;
+        buttonOptionA.textContent = myQuestions[index].choices[0];
+        buttonOptionB.textContent = myQuestions[index].choices[1];
+        buttonOptionC.textContent = myQuestions[index].choices[2];
+        buttonOptionD.textContent = myQuestions[index].choices[3];
+
+    }
+}
+
+// check answers and move to next question
+function answers(event){
+    event.preventDefault();
+
+    //appends message to section for display
+    feedbackEl.style.display = "block";
+    var message = document.createElement("p");
+    feedbackEl.appendChild(message);
+
+    //only shows the message for one second 
+    setTimeout(function() {
+        message.style.display = "none";
+    }, 1000);
+
+    // check the answers
+    if (myQuestions[questionCount].correctChoice === event.target.value) {
+        message.textContent = "Correct!!!";
+        score+=5;
+    } else if (myQuestions[questionCount].correctChoice !== event.target.value) {
+        timer-=10;
+        message.textContent = "Wrong!";
+    }
+
+    //now increment question counter so the question index is increased
+    if (questionCount < myQuestions.length) {
+        questionCount++;
+    }
+
+    //call renderQuestion to bring in next question when one of the answer buttons is clicked
+    renderQuestion(questionCount);
+}
+
+function theEnd(event) {
+    event.preventDefault();
+
+    theEndEl.style.display = "none";
+    highScoresEl.style.display = "block";
+
+    let userInput = enterInitials.value.toUpperCase();
+    scoreList = scoreList.sort((x,y) => {
+        if (x.score < b.score) {
+            return 1;
+        } else {
+        return -1;
+        }
+        
+    });
+
+    scoreListEl.innerHTML="";
+    for (let i = 0; i < scoreList.length; i++){
+        var li = document.createElement("li");
+        li.textContent = "${scoreList[i].initials}: ${scoreList[i].score}";
+        scoreListEl.append(li);
+    }
+
+    // Add to local storage
+    storeScores();
+    displayScores();
+
+}
+
+function storeScores() {
+    localStorage.setItem("scoreList", JSON.stringify(scoreList));
+}
+
+function displayScores() {
+    // gets stored scores from localStorage
+    // parsing the JSON string
+    var storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
+
+    //if scores were retrieved from localStorage, update the scorelist array
+    if (storedScoreList !== null) {
+        scoreList = storedScoreList;
+
+    }
+}
+
+//clear scores
+function clearScores() {
+    localStorage.clear();
+    scoreListEl.innerHTML="";
+}
+
+//Event listeners
+//Starts time and displays first question when Start Quiz Button is clicked
 startQuizBtnEl.addEventListener("click", startQuiz);
+
+answerButtons.forEach(item => {
+    item.addEventListener("click", answers);
+});
+
+submitScoreButton.addEventListener("click", theEnd);
+
+goBackButton.addEventListener("click", function() {
+    highScoresEl.style.display = "none";
+    instructionsDivEl.style.display = "block";
+    timer = 75;
+    timerEl.textContent = "Time:$(timer)";
+});
+
+clearScoresButton.addEventListener("click", clearScores);
+
+viewScoresButton.addEventListener("click", function() {
+    if (highScoresEl.style.display === "none") {
+        highScoresEl.style.display = "block";
+    } else if (highScoresEl.style.display === "block") {
+        highScoresEl.style.display = "none";
+    } else {
+        return alert("No scores to show.");
+    }
+    
+});
 
 
 
