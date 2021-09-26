@@ -94,3 +94,7 @@ header p {
     width: 50%;
     
 }
+
+#scores-list {
+    list-style: none;
+}

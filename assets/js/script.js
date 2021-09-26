@@ -77,7 +77,8 @@ function setTime() {
 
         if (timer === 0 || questionCount === myQuestions.length) {
             clearInterval(timerInterval);
-            questionsContainerEl.classList.add("hide")
+            questionsContainerEl.style.display = "none";
+            questionsContainerEl.classList.add("hide");
             theEndEl.classList.remove("hide");
             scoreEl.textContent = timer;
         }
@@ -86,8 +87,10 @@ function setTime() {
 
 // start quiz with timer and set up questions
 function startQuiz() {
-    instructionsDivEl.classList.add("hide");
     questionsContainerEl.classList.remove("hide");
+    instructionsDivEl.classList.add("hide");
+    instructionsDivEl.style.display = "none";
+    questionsContainerEl.style.display = "block";
     questionCount = 0;
     setTime();
     renderQuestion(questionCount);
@@ -140,6 +143,7 @@ function answers(event){
 
 function theEnd(event) {
     event.preventDefault();
+    instructionsDivEl.classList.add("hide");
     instructionsDivEl.style.display = "none";
     theEndEl.style.display = "none";
     highScoresEl.style.display = "block";
@@ -196,7 +200,7 @@ goBackButton.addEventListener("click", function() {
     highScoresEl.style.display = "none";
     instructionsDivEl.style.display = "block";
     timer = 75;
-    timerEl.textContent = "Time:$(timer)";
+    timerEl.textContent = "Time: " + timer;
 });
 
 clearScoresButton.addEventListener("click", clearScores);
