@@ -72,6 +72,7 @@ header p {
 
 .choices {
     list-style: none;
+    text-align:left;
 }
 
 .btn {
