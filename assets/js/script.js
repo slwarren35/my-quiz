@@ -26,7 +26,7 @@ const buttonOptionB = document.querySelector("#optionB");
 const buttonOptionC = document.querySelector("#optionC");
 const buttonOptionD = document.querySelector("#optionD");
 const answerButtons = document.querySelectorAll(".btn-answer");
-const submitScoreButton = document.querySelector("#submitScores");
+const submitScoreButton = document.querySelector("#submitScore");
 const goBackButton = document.querySelector("#goBack");
 const clearScoresButton = document.querySelector("#clearScores");
 
@@ -122,7 +122,7 @@ function answers(event){
     // check the answers
     if (myQuestions[questionCount].correctChoice === event.target.value) {
         message.textContent = "Correct!!!";
-        score+=5;
+        
     } else if (myQuestions[questionCount].correctChoice !== event.target.value) {
         timer-=10;
         message.textContent = "Wrong!";
@@ -137,26 +137,21 @@ function answers(event){
     renderQuestion(questionCount);
 }
 
+
 function theEnd(event) {
     event.preventDefault();
-
+    instructionsDivEl.style.display = "none";
     theEndEl.style.display = "none";
     highScoresEl.style.display = "block";
 
     let userInput = enterInitials.value.toUpperCase();
-    scoreList = scoreList.sort((x,y) => {
-        if (x.score < b.score) {
-            return 1;
-        } else {
-        return -1;
-        }
-        
-    });
+    scoreList.push({initials: userInput, score: timer});
 
     scoreListEl.innerHTML="";
     for (let i = 0; i < scoreList.length; i++){
         var li = document.createElement("li");
-        li.textContent = "${scoreList[i].initials}: ${scoreList[i].score}";
+        li.textContent = "" + scoreList[i].initials + ": " + scoreList[i].score;
+        //li.textContent = '${scoreList[i].initials}: ${scoreList[i].score}';
         scoreListEl.append(li);
     }
 
