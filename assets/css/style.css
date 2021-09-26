@@ -43,6 +43,12 @@ header p {
     background-color: #89229c;
     color: #fff;
     width:fit-content;
+    pointer-events: ;
+}
+
+.btn:hover {
+    background-color: #d703fc;
+    cursor: pointer;
 }
 
 
@@ -79,7 +85,12 @@ header p {
 }
 
 .feedback{
-    color: grey;
+    color: darkgray;
     font-style: italic;
-    font-size: 20px;
+    font-size: 30px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+    
 }

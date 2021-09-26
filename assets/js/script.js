@@ -150,8 +150,7 @@ function theEnd(event) {
     scoreListEl.innerHTML="";
     for (let i = 0; i < scoreList.length; i++){
         var li = document.createElement("li");
-        li.textContent = "" + scoreList[i].initials + ": " + scoreList[i].score;
-        //li.textContent = '${scoreList[i].initials}: ${scoreList[i].score}';
+        li.textContent = scoreList[i].initials + ":   " + scoreList[i].score;
         scoreListEl.append(li);
     }
 
